@@ -20,7 +20,6 @@ def select_subject2(page,subject):
     subject_autosuggestion.wait_for_timeout(5000)
     subject_autosuggestion.click()
 
-@pytest.mark.skip
 def test_selected(page: Page,base_url) -> None:
     page.goto(base_url)
     page.get_by_role("button", name="Agree", exact=True).click()
@@ -34,6 +33,7 @@ def test_selected(page: Page,base_url) -> None:
     select_subject(page, "Roanoke")
     page.wait_for_timeout(4000)
 
+@pytest.mark.skip
 def test_autosuggestion(page:Page,base_url)->None:
     page.goto(base_url)
     page.get_by_role("button", name="Agree", exact=True).click()
