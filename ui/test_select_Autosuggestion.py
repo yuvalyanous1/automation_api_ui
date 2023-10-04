@@ -44,6 +44,4 @@ def test_autosuggestion(page:Page,base_url)->None:
     page.wait_for_timeout(4000)
     select_input.fill("tel")
     page.wait_for_selector('div.selectable-result-list div')
-    page.wait_for_timeout(4000)  # Wait for 4 seconds
     select_subject2(page, "Tel Aviv")
-    page.wait_for_timeout(4000)
