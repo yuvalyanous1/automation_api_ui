@@ -12,7 +12,7 @@ def test_screener_get():
         'Referer': 'https://finviz.com/screener.ashx',
     }
 
-    response = requests.get(base_url, data=params , headers=headers)
+    response = requests.get(base_url, data=params, headers=headers)
 
     assert response.ok
     if response.ok:

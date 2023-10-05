@@ -11,11 +11,6 @@ def base_finviz()->str:
     return "https://finviz.com/"
 
 
-@pytest.fixture
-def select_option():
-    def select(page, locator, option):
-        page.locator(locator).select_option(option)
-    return select
 
 
 @pytest.fixture
