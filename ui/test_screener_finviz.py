@@ -1,8 +1,11 @@
 import re
 
-from playwright.sync_api import Page , expect
+from playwright.sync_api import Playwright , expect
 
-def test_screener_highrisk(page:Page,base_finviz,select_option_and_get_text)->None:
+def test_screener_highrisk(playwright: Playwright,base_finviz,select_option_and_get_text)->None:
+    browser = playwright.chromium.launch(headless=False)
+    context = browser.new_context()
+    page = context.new_page()
     page.goto(base_finviz)
     expect(page).to_have_url(re.compile(".*finviz"))
     page.get_by_role("link", name="Screener").click()
