@@ -2,15 +2,13 @@ import pytest
 
 
 @pytest.fixture(scope='session')
-def base_url()->str:
+def base_url() -> str:
     return "https://www.austrian.com/lt/en/homepage"
 
 
 @pytest.fixture(scope='session')
-def base_finviz()->str:
+def base_finviz() -> str:
     return "https://finviz.com/"
-
-
 
 
 @pytest.fixture
@@ -20,4 +18,5 @@ def select_option_and_get_text():
         page.wait_for_timeout(5000)
         selected_value = page.locator(element_locator + " > option[value='" + option_value + "']")
         assert selected_value.inner_text() == expected_text
+
     return _select_option_and_get_text

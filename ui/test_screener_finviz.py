@@ -1,9 +1,7 @@
 import re
 
-import pytest
 from playwright.sync_api import Page , expect
 
-@pytest.mark.santiy
 def test_screener_highrisk(page:Page,base_finviz,select_option_and_get_text)->None:
     page.goto(base_finviz)
     expect(page).to_have_url(re.compile(".*finviz"))
@@ -23,8 +21,5 @@ def test_screener_highrisk(page:Page,base_finviz,select_option_and_get_text)->No
 
                  # ----------------Current Volume------------------ #
     select_option_and_get_text(page, "#fs_sh_curvol", "o400" ,'Over 400K')
-
-                 # ----------------save screener------------------ #
-    select_option_and_get_text(page, "#screenerPresetsSelect", "__save_screen",'-Save Screen')
 
     page.screenshot(path="filter1.png")

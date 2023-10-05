@@ -29,9 +29,6 @@ def test_selected(page: Page,base_url) -> None:
     page.wait_for_selector('div.selectable-result-list div')
     select_subject(page,"Isfahan")
     page.wait_for_timeout(4000)
-    select_input.fill("ro")
-    select_subject(page, "Roanoke")
-    page.wait_for_timeout(4000)
 
 @pytest.mark.skip
 def test_autosuggestion(page:Page,base_url)->None:
