@@ -1,4 +1,5 @@
 import pytest
+from playwright.sync_api import sync_playwright
 
 
 @pytest.fixture(scope='session')
@@ -20,3 +21,4 @@ def select_option_and_get_text():
         assert selected_value.inner_text() == expected_text
 
     return _select_option_and_get_text
+
