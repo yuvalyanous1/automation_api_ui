@@ -14,7 +14,7 @@ def test_screener_get(headers,base_url):
     assert response.ok
     if response.ok:
         print("API request successful")
-        print(response.status_code)
+        print("the status code:" , response.status_code)
     else:
         print("API request failed")
         print("Response status code:", response.status_code)
@@ -36,7 +36,7 @@ def test_screener_put(headers,base_url):
     assert response.ok
     if response.ok:
         print("API request successful")
-        print(response.status_code)
+        print("the status code:" , response.status_code)
     else:
         print("API request failed")
         print("Response status code:", response.status_code)
