@@ -1,10 +1,10 @@
-import re
-from conftest import base_finviz, select_option_and_get_text
-from playwright.sync_api import Page , expect
+import pytest
+from conftest import page, base_finviz, select_option_and_get_text
+from playwright.sync_api import expect
 
-def test_screener_highrisk(page:Page,base_finviz,select_option_and_get_text)->None:
+def test_screener_highrisk(p,base_finviz,select_option_and_get_text)->None:
     page.goto(base_finviz)
-    expect(page).to_have_url(re.compile(".*finviz"))
+    expect(page).to_have_url(p.compile(".*finviz"))
     page.get_by_role("link", name="Screener").click()
 
                    # -----------------marketcap---------------------- #
