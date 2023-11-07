@@ -1,5 +1,5 @@
 import re
-
+from conftest import base_finviz, select_option_and_get_text
 from playwright.sync_api import Page , expect
 
 def test_screener_highrisk(page:Page,base_finviz,select_option_and_get_text)->None:
@@ -21,5 +21,5 @@ def test_screener_highrisk(page:Page,base_finviz,select_option_and_get_text)->No
 
                  # ----------------Current Volume------------------ #
     select_option_and_get_text(page, "#fs_sh_curvol", "o400" ,'Over 400K')
-
+    print("test_screener_highrisk test function called")
     page.screenshot(path="filter1.png")
