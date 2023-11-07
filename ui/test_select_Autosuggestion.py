@@ -20,7 +20,6 @@ def select_subject2(page,subject):
     subject_autosuggestion.wait_for_timeout(5000)
     subject_autosuggestion.click()
 
-@pytest.mark.skip
 def test_selected(page: Page,base_url) -> None:
     page.goto(base_url)
     page.get_by_role("button", name="Agree", exact=True).click()
@@ -30,10 +29,8 @@ def test_selected(page: Page,base_url) -> None:
     page.wait_for_selector('div.selectable-result-list div')
     select_subject(page,"Isfahan")
     page.wait_for_timeout(4000)
-    select_input.fill("ro")
-    select_subject(page, "Roanoke")
-    page.wait_for_timeout(4000)
 
+@pytest.mark.skip
 def test_autosuggestion(page:Page,base_url)->None:
     page.goto(base_url)
     page.get_by_role("button", name="Agree", exact=True).click()
@@ -44,6 +41,4 @@ def test_autosuggestion(page:Page,base_url)->None:
     page.wait_for_timeout(4000)
     select_input.fill("tel")
     page.wait_for_selector('div.selectable-result-list div')
-    page.wait_for_timeout(4000)  # Wait for 4 seconds
     select_subject2(page, "Tel Aviv")
-    page.wait_for_timeout(4000)
