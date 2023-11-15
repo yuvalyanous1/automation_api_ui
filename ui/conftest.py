@@ -22,15 +22,4 @@ def select_option_and_get_text():
 
     return _select_option_and_get_text
 
-@pytest.fixture(scope='function')
-def page():
-    with sync_playwright() as p:
-        browser = p.chromium.launch()
-        context = browser.new_context()
-        page = context.new_page()
-        yield page
-        page.close()
-        context.close()
-        browser.close()
-
 
