@@ -19,9 +19,9 @@ class _BookstoreState extends State<Bookstore> {
   List<Author> authors = getAuthorList();
 
   @override
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // background
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
@@ -42,6 +42,7 @@ class _BookstoreState extends State<Bookstore> {
                   bottomRight: Radius.circular(40),
                 ),
               ),
+              // title
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -66,6 +67,7 @@ class _BookstoreState extends State<Bookstore> {
                 ],
               ),
             ),
+            // first list the big list stories
             Expanded(
               child: Container(
                 child: ListView(
@@ -115,6 +117,7 @@ class _BookstoreState extends State<Bookstore> {
                       ],
                     ),
                   ),
+                  // the second list the Authors
                   Container(
                     height: 100,
                     margin: EdgeInsets.only(bottom: 25),
@@ -213,6 +216,7 @@ class _BookstoreState extends State<Bookstore> {
     );
   }
 
+// click in the list first going the book detail
   List<Widget> buildBooks() {
     List<Widget> list = [];
     for (var i = 0; i < books.length; i++) {
@@ -275,6 +279,7 @@ class _BookstoreState extends State<Bookstore> {
     );
   }
 
+// click the second list go to the author stories
   List<Widget> buildAuthors() {
     List<Widget> list = [];
     for (var i = 0; i < authors.length; i++) {
@@ -340,25 +345,6 @@ class _BookstoreState extends State<Bookstore> {
                     color: Color.fromARGB(255, 5, 5, 5),
                     fontWeight: FontWeight.bold,
                   ),
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.library_books,
-                      color: Color.fromARGB(255, 5, 5, 5),
-                      size: 14,
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      author.books.toString() + " books",
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Color.fromARGB(255, 5, 5, 5),
-                      ),
-                    ),
-                  ],
                 ),
               ],
             ),
