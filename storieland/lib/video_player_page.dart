@@ -1,6 +1,11 @@
 import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:developer' as developer;
+
+import 'homepage.dart';
+import 'local_bottom_navigation_bar.dart';
 
 class VideoPlayrePage extends StatefulWidget {
   const VideoPlayrePage({Key? key}) : super(key: key);
@@ -10,6 +15,7 @@ class VideoPlayrePage extends StatefulWidget {
 }
 
 class _VideoPlayerPageState extends State<VideoPlayrePage> {
+  int _currentIndex = 0;
   late List<CustomVideoPlayerController> _customVideoPlayerControllers;
   late List<String> assetVideoPaths;
   late List<String> videoTitles;
@@ -21,7 +27,16 @@ class _VideoPlayerPageState extends State<VideoPlayrePage> {
   }
 
   @override
+  void dispose() {
+    for (var controller in _customVideoPlayerControllers) {
+      controller.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    developer.log('Debug message', name: 'my.app.category');
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -60,10 +75,19 @@ class _VideoPlayerPageState extends State<VideoPlayrePage> {
           ],
         ),
       ),
+      bottomNavigationBar: LocalBottomNavigationBar(
+        currentIndex: _currentIndex,
+        onItemSelected: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+      ),
     );
   }
 
   Widget buildVideoCard(int index) {
+    developer.log('Debug message', name: 'my.app.category');
     return Container(
       width: 150,
       margin: EdgeInsets.all(8),
@@ -106,6 +130,7 @@ class _VideoPlayerPageState extends State<VideoPlayrePage> {
     );
   }
 
+// the videos
   void initializeVideoPlayers() {
     assetVideoPaths = [
       "assets/video/1212.mp4",
@@ -114,7 +139,7 @@ class _VideoPlayerPageState extends State<VideoPlayrePage> {
       "assets/video/test2.mp4",
       "assets/video/test3.mp4",
     ];
-
+// the title for videos
     videoTitles = [
       "storie time away",
       "in the end now",
@@ -127,10 +152,10 @@ class _VideoPlayerPageState extends State<VideoPlayrePage> {
       assetVideoPaths.length,
       (index) {
         VideoPlayerController videoPlayerController =
-            VideoPlayerController.asset(assetVideoPaths[index])
-              ..initialize().then((value) {
-                setState(() {});
-              });
+            VideoPlayerController.asset(assetVideoPaths[index]);
+        videoPlayerController.initialize().then((_) {
+          setState(() {});
+        });
 
         return CustomVideoPlayerController(
           context: context,

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:storieland/anthor.dart';
+import 'package:storieland/video_player_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'book_detail.dart';
 import 'constants.dart';
 import 'data.dart';
+import 'local_bottom_navigation_bar.dart';
 
 class Bookstore extends StatefulWidget {
   @override
@@ -13,10 +15,16 @@ class Bookstore extends StatefulWidget {
 }
 
 class _BookstoreState extends State<Bookstore> {
+  int _currentIndex = 0;
   late Filter selectedFilter;
 
   List<Book> books = getBookList();
   List<Author> authors = getAuthorList();
+
+  final List<Widget> pages = [
+    Bookstore(),
+    VideoPlayrePage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +42,7 @@ class _BookstoreState extends State<Bookstore> {
             SizedBox(
               height: 48,
             ),
+
             Container(
               padding: EdgeInsets.only(top: 16, left: 16, right: 16),
               decoration: BoxDecoration(
@@ -133,47 +142,14 @@ class _BookstoreState extends State<Bookstore> {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        height: 25,
-        decoration: BoxDecoration(
-          color: Color.fromARGB(0, 248, 248, 250),
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(25),
-            topRight: Radius.circular(25),
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            GestureDetector(
-              onTap: () {
-                launch(
-                    'https://doc-hosting.flycricket.io/storieland-privacy-policy/c066ef4d-3df8-4560-9d41-935662fe0bac/privacy');
-              },
-              child: Text(
-                'Privacy Policy',
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            SizedBox(width: 20),
-            GestureDetector(
-              onTap: () {
-                launch(
-                    'https://doc-hosting.flycricket.io/storieland-terms-conditions/9b8ede84-57e2-46d0-9dad-2e55f2e8d043/terms');
-              },
-              child: Text(
-                'Terms & Conditions',
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ],
-        ),
+
+      bottomNavigationBar: LocalBottomNavigationBar(
+        currentIndex: _currentIndex,
+        onItemSelected: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
       ),
     );
   }
