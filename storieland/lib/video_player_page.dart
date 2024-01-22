@@ -1,10 +1,7 @@
 import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'dart:developer' as developer;
-
-import 'homepage.dart';
 import 'local_bottom_navigation_bar.dart';
 
 class VideoPlayrePage extends StatefulWidget {
@@ -92,38 +89,58 @@ class _VideoPlayerPageState extends State<VideoPlayrePage> {
       width: 150,
       margin: EdgeInsets.all(8),
       child: Card(
-        elevation: 5,
+        color: Color.fromARGB(113, 255, 255, 255).withOpacity(0.5),
+        elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
+          side: BorderSide(
+            color: Colors.white.withOpacity(0.5),
+            width: 1.0,
+          ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomVideoPlayer(
-                customVideoPlayerController:
-                    _customVideoPlayerControllers[index],
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(15.0),
+          child: Container(
+            padding: const EdgeInsets.all(12.0),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color.fromARGB(122, 192, 192, 192).withOpacity(0.8),
+                  const Color.fromARGB(0, 255, 255, 255),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
               ),
-              SizedBox(height: 2),
-              Text(
-                videoTitles[index],
-                style: GoogleFonts.chewy(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 55, 151, 151),
-                  shadows: [
-                    Shadow(
-                      color:
-                          Color.fromARGB(255, 155, 133, 133).withOpacity(0.5),
-                      offset: Offset(2, 2),
-                      blurRadius: 4,
-                    ),
-                  ],
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CustomVideoPlayer(
+                  key: UniqueKey(),
+                  customVideoPlayerController:
+                      _customVideoPlayerControllers[index],
                 ),
-              ),
-              SizedBox(height: 8),
-            ],
+                SizedBox(height: 2),
+                Text(
+                  videoTitles[index],
+                  style: GoogleFonts.chewy(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(227, 30, 61, 66),
+                    shadows: [
+                      Shadow(
+                        color: const Color.fromARGB(255, 110, 110, 110)
+                            .withOpacity(0.5),
+                        offset: Offset(2, 2),
+                        blurRadius: 4,
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 8),
+              ],
+            ),
           ),
         ),
       ),
@@ -133,6 +150,7 @@ class _VideoPlayerPageState extends State<VideoPlayrePage> {
 // the videos
   void initializeVideoPlayers() {
     assetVideoPaths = [
+      "assets/video/themonkeyparty.mp4",
       "assets/video/1212.mp4",
       "assets/video/123123.mp4",
       "assets/video/test1.mp4",
@@ -141,6 +159,7 @@ class _VideoPlayerPageState extends State<VideoPlayrePage> {
     ];
 // the title for videos
     videoTitles = [
+      "testvideo",
       "storie time away",
       "in the end now",
       "child and children",

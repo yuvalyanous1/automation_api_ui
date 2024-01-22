@@ -3,9 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:storieland/anthor.dart';
 import 'package:storieland/video_player_page.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'book_detail.dart';
-import 'constants.dart';
 import 'data.dart';
 import 'local_bottom_navigation_bar.dart';
 
@@ -16,14 +14,12 @@ class Bookstore extends StatefulWidget {
 
 class _BookstoreState extends State<Bookstore> {
   int _currentIndex = 0;
-  late Filter selectedFilter;
 
   List<Book> books = getBookList();
   List<Author> authors = getAuthorList();
 
   final List<Widget> pages = [
     Bookstore(),
-    VideoPlayrePage(),
   ];
 
   @override
@@ -75,6 +71,17 @@ class _BookstoreState extends State<Bookstore> {
                   ),
                 ],
               ),
+            ),
+            IconButton(
+              icon: Icon(Icons.play_circle_fill),
+              iconSize: 50,
+              color: Colors.white,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => VideoPlayrePage()),
+                );
+              },
             ),
             // first list the big list stories
             Expanded(
@@ -154,44 +161,6 @@ class _BookstoreState extends State<Bookstore> {
     );
   }
 
-  Widget buildFilter(Filter item) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedFilter = item;
-        });
-      },
-      child: Container(
-        height: 50,
-        child: Stack(
-          children: <Widget>[
-            Align(
-              alignment: Alignment.bottomLeft,
-              child: Container(
-                width: 30,
-                height: 3,
-                color:
-                    selectedFilter == item ? kPrimaryColor : Colors.transparent,
-              ),
-            ),
-            Center(
-              child: Text(
-                item.name,
-                style: GoogleFonts.catamaran(
-                  color:
-                      selectedFilter == item ? kPrimaryColor : Colors.grey[400],
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 3,
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
 // click in the list first going the book detail
   List<Widget> buildBooks() {
     List<Widget> list = [];
@@ -221,7 +190,7 @@ class _BookstoreState extends State<Bookstore> {
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: Color.fromARGB(255, 0, 0, 0).withOpacity(0.5),
+                      color: Color.fromARGB(0, 245, 241, 241).withOpacity(0.5),
                       spreadRadius: 15,
                       blurRadius: 20,
                       offset: Offset(0, 3),

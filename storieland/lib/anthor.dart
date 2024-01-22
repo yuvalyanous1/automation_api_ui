@@ -80,14 +80,6 @@ class Authordetail extends StatelessWidget {
                               color: const Color.fromARGB(255, 0, 0, 0),
                               fontWeight: FontWeight.w500,
                               height: -0.5,
-                              shadows: [
-                                Shadow(
-                                  color: Color.fromARGB(255, 2, 2, 2)
-                                      .withOpacity(0.5),
-                                  offset: Offset(2, 2),
-                                  blurRadius: 2,
-                                ),
-                              ],
                             ),
                           ),
                           Padding(

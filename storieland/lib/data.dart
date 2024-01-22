@@ -62,6 +62,12 @@ class Book {
 List<Book> getBookList() {
   return <Book>[
     Book(
+      "The Enchanted Expedition",
+      "Once upon a time in the bustling city of Harmonyville, there lived three adventurous friends  Mia, Max, and Oliver. They were inseparable and always on the lookout for exciting escapades. One day, as they explored the heart of the city, they stumbled upon a mysterious map that led to the Enchanted Forest.Curiosity getting the best of them, the trio embarked on a journey beyond the city limits, venturing into the unknown. As they entered the Enchanted Forest, the air shimmered with magic, and the trees whispered secrets.Their first encounter in the magical forest was with a wise old owl named Olliver. Perched on a branch, Olliver greeted them, Greetings young travelers! To unlock the secrets of the Enchanted Forest you must pass three trials. The first trial is to help the playful squirrels find their lost acorns Mia, Max, and Oliver agreed and set off to find the acorns. Along the way, they encountered a mischievous rabbit named Remy. Hey you three Want some help finding those acorns? Remy asked with a cheeky grin.With Remy's assistance, the friends quickly located the acorns hidden by the crafty squirrels. The grateful squirrels chattered joyfully, Thank you kind travelers!"
+          "Your reward is a magical golden feather that will guide you through the forest.Guided by the golden feather, the trio faced their second trial a riddle posed by a wise old tortoise named Tessa After much pondering and teamwork, they cracked the riddle,   and Tessa bestowed upon them a shimmering amulet that would protect them on their journey.As they ventured deeper, they encountered a mischievous fox named Felix. Well well what do we have here? You seeking the heart of the Enchanted Forest? Felix smirked.With a sly grin,   Felix offered to guide them through the final trial  navigating the mystical maze. The friends, cautious yet trusting, followed Felix's lead. In the heart of the maze, they discovered a magical portal leading to a breathtaking clearing where the majestic Spirit of the Forest awaited.Congratulations brave adventurers! You have proven yourselves worthy the Spirit of the Forest declared.   As a token of appreciation I grant you the ability to communicate with the animals and understand the language of nature.  With their newfound abilities, Mia, Max, and Oliver returned to Harmonyville, sharing tales of their enchanted expedition. The city was captivated by their adventurous journey, and the trio continued to explore the wonders of the world, guided by the wisdom of the Enchanted Forest and the friends they made along the way.",
+      "assets/TETET.png",
+    ),
+    Book(
       "Rising Stars of the City",
       "In the vibrant city of Dynamoville, a group of spirited young boys came together to form the Dynamo Dazzlers, a football team fueled by passion and a shared dream of winning the coveted City Cup Under the guidance of their dedicated coach, Coach Turner, the Dynamo Dazzlers emerged as rising stars in the football scene.The Dynamo Dazzlers honed their skills at the cutting-edge Dynamo Dome, a state-of-the-art training facility pulsating with energy The neon lights and electrifying atmosphere fueled their determination to reach new heights The training sessions were intense, with each player contributing their unique talents to the team's dynamic style of play.As the Dynamo Dazzlers progressed through the season, they faced formidable opponents in legendary stadiums like Thunderfield, where the thunderous cheers of the crowd echoed their ambitions, and Victory Park, where the lush green field became a canvas for their football artistry.In their pursuit of greatness, the Dynamo Dazzlers encountered thrilling matches against rivals such as the Lightning Lions and the Thunder Tigers The boys, led by the skillful striker Danny, the rock-solid defender Max, and the wizardry of goal-scoring maestro Jake, showcased not only their individual prowess but also their unwavering camaraderie.The journey climaxed at Dynamo Arena, the grand stage where dreams transformed into reality The City Cup final was a spectacle of skill and strategy, with the Dynamo Dazzlers proving that their rise to stardom was a result of teamwork, dedication, and the sheer love for the beautiful game.Dynamo Dazzlers: Rising Stars of the City Cup is a story of triumph, growth, and the indomitable spirit of a team destined to shine brightly in the world of football.",
       "assets/striker shot th 5d9bdaec-27d8-4747-8652-029003d966d7.png",
@@ -179,10 +185,4 @@ List<Author> getAuthorList() {
       "assets/image.png",
     ),
   ];
-}
-
-class Filter {
-  String name;
-
-  Filter(this.name);
 }
