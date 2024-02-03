@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:storieland/anthor.dart';
 import 'package:storieland/video_player_page.dart';
@@ -24,139 +23,147 @@ class _BookstoreState extends State<Bookstore> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // background
-      body: Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage("assets/SL_123020_39360_14.jpg"),
-          fit: BoxFit.cover,
-        )),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(
-              height: 48,
-            ),
-
-            Container(
-              padding: EdgeInsets.only(top: 16, left: 16, right: 16),
-              decoration: BoxDecoration(
-                color: Color.fromARGB(0, 163, 101, 75),
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(40),
-                ),
+    return DefaultTextStyle(
+      style: TextStyle(
+        fontSize: 16.0,
+      ),
+      child: MediaQuery(
+        data: MediaQuery.of(context).copyWith(textScaleFactor: 1.2),
+        child: Scaffold(
+          // background
+          body: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/SL_123020_39360_14.jpg"),
+                fit: BoxFit.cover,
               ),
-              // title
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "StorieLand",
-                    style: GoogleFonts.chicle(
-                      color: Color.fromARGB(255, 26, 56, 112),
-                      fontWeight: FontWeight.w900,
-                      fontSize: 40,
-                      height: 1,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(
+                  height: 48,
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: 16, left: 16, right: 16),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(0, 163, 101, 75),
+                    borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(40),
                     ),
                   ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 75),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            IconButton(
-              icon: Icon(Icons.play_circle_fill),
-              iconSize: 50,
-              color: Colors.white,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => VideoPlayrePage()),
-                );
-              },
-            ),
-            // first list the big list stories
-            Expanded(
-              child: Container(
-                child: ListView(
-                  physics: BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  children: buildBooks(),
-                ),
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Color.fromARGB(0, 243, 238, 236),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(40),
-                ),
-              ),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Sleeping Stories",
-                          style: TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 6, 7, 7),
-                            shadows: [
-                              Shadow(
-                                color: Color.fromARGB(255, 155, 133, 133)
-                                    .withOpacity(0.5),
-                                offset: Offset(2, 2),
-                                blurRadius: 4,
-                              ),
-                            ],
-                          ),
+                  // title
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "StorieLand",
+                        style: GoogleFonts.chicle(
+                          color: Color.fromARGB(255, 26, 56, 112),
+                          fontWeight: FontWeight.w900,
+                          fontSize: 40,
+                          height: 1,
                         ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 8,
-                            ),
-                          ],
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(right: 75),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  // the second list the Authors
-                  Container(
-                    height: 100,
-                    margin: EdgeInsets.only(bottom: 25),
+                ),
+                IconButton(
+                  icon: Icon(Icons.play_circle_fill),
+                  iconSize: 50,
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => VideoPlayrePage()),
+                    );
+                  },
+                ),
+                // first list the big list stories
+                Expanded(
+                  child: Container(
                     child: ListView(
                       physics: BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
-                      children: buildAuthors(),
+                      children: buildBooks(),
                     ),
                   ),
-                ],
-              ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(0, 243, 238, 236),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(16),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Sleeping Stories",
+                              style: TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 6, 7, 7),
+                                shadows: [
+                                  Shadow(
+                                    color: Color.fromARGB(255, 155, 133, 133)
+                                        .withOpacity(0.5),
+                                    offset: Offset(2, 2),
+                                    blurRadius: 4,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 8,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      // the second list the Authors
+                      Container(
+                        height: 100,
+                        margin: EdgeInsets.only(bottom: 25),
+                        child: ListView(
+                          physics: BouncingScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
+                          children: buildAuthors(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
+          bottomNavigationBar: LocalBottomNavigationBar(
+            currentIndex: _currentIndex,
+            onItemSelected: (index) {
+              setState(() {
+                _currentIndex = index;
+              });
+            },
+          ),
         ),
-      ),
-
-      bottomNavigationBar: LocalBottomNavigationBar(
-        currentIndex: _currentIndex,
-        onItemSelected: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
       ),
     );
   }

@@ -39,12 +39,10 @@ class _LocalBottomNavigationBarState extends State<LocalBottomNavigationBar> {
           tabBackgroundColor: Colors.grey[100]!,
           tabs: [
             _buildTab(Icons.privacy_tip, 'Privacy Policy', () {
-              // Handle Privacy Policy click
               launch(
                   'https://doc-hosting.flycricket.io/storieland-privacy-policy/c066ef4d-3df8-4560-9d41-935662fe0bac/privacy');
             }),
             _buildTab(Icons.description, 'Terms & Conditions', () {
-              // Handle Terms & Conditions click
               launch(
                   'https://doc-hosting.flycricket.io/storieland-terms-conditions/9b8ede84-57e2-46d0-9dad-2e55f2e8d043/terms');
             }),

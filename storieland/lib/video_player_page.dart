@@ -34,53 +34,60 @@ class _VideoPlayerPageState extends State<VideoPlayrePage> {
   @override
   Widget build(BuildContext context) {
     developer.log('Debug message', name: 'my.app.category');
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/SL_123020_39360_14.jpg"),
-            fit: BoxFit.cover,
-          ),
+    return DefaultTextStyle(
+        style: TextStyle(
+          fontSize: 16.0,
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(height: 20),
-            Text(
-              "StorieLand",
-              style: GoogleFonts.chicle(
-                color: Color.fromARGB(255, 26, 56, 112),
-                fontWeight: FontWeight.w900,
-                fontSize: 40,
-                height: 1,
-              ),
-            ),
-            SizedBox(height: 20),
-            Expanded(
-              child: Container(
-                height: 500,
-                child: ListView.builder(
-                  physics: BouncingScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  itemCount: _customVideoPlayerControllers.length,
-                  itemBuilder: (context, index) {
-                    return buildVideoCard(index);
-                  },
+        child: MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.2),
+          child: Scaffold(
+            body: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/SL_123020_39360_14.jpg"),
+                  fit: BoxFit.cover,
                 ),
               ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(height: 20),
+                  Text(
+                    "StorieLand",
+                    style: GoogleFonts.chicle(
+                      color: Color.fromARGB(255, 26, 56, 112),
+                      fontWeight: FontWeight.w900,
+                      fontSize: 40,
+                      height: 1,
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Expanded(
+                    child: Container(
+                      height: 500,
+                      child: ListView.builder(
+                        physics: BouncingScrollPhysics(),
+                        scrollDirection: Axis.vertical,
+                        itemCount: _customVideoPlayerControllers.length,
+                        itemBuilder: (context, index) {
+                          return buildVideoCard(index);
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: LocalBottomNavigationBar(
-        currentIndex: _currentIndex,
-        onItemSelected: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-      ),
-    );
+            bottomNavigationBar: LocalBottomNavigationBar(
+              currentIndex: _currentIndex,
+              onItemSelected: (index) {
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
+            ),
+          ),
+        ));
   }
 
   Widget buildVideoCard(int index) {
@@ -151,17 +158,17 @@ class _VideoPlayerPageState extends State<VideoPlayrePage> {
   void initializeVideoPlayers() {
     assetVideoPaths = [
       "assets/video/themonkeyparty.mp4",
-      "assets/video/1212.mp4",
-      "assets/video/123123.mp4",
+      "assets/video/The_Farmyard_Adventure.mp4",
+      "assets/video/ocean.mp4",
       "assets/video/test1.mp4",
       "assets/video/test2.mp4",
       "assets/video/test3.mp4",
     ];
 // the title for videos
     videoTitles = [
-      "testvideo",
-      "storie time away",
-      "in the end now",
+      "The Forest Clearing",
+      "The Farmyard Adventure",
+      "The Ocean's Classroom",
       "child and children",
       "panda hungry",
       "lulu and lylyl",
