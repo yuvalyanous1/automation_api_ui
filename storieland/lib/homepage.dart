@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:storieland/anthor.dart';
 import 'package:storieland/video_player_page.dart';
 import 'book_detail.dart';
 import 'data.dart';
+import 'iconvideo.dart';
 import 'local_bottom_navigation_bar.dart';
 
 class Bookstore extends StatefulWidget {
@@ -77,17 +79,23 @@ class _BookstoreState extends State<Bookstore> {
                     ],
                   ),
                 ),
-                IconButton(
-                  icon: Icon(Icons.play_circle_fill),
-                  iconSize: 50,
-                  color: Colors.white,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => VideoPlayrePage()),
-                    );
-                  },
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => VideoPlayrePage(),
+                          ),
+                        );
+                      },
+                      child: Image.asset(
+                        getSvgPathBasedOnTime(),
+                        fit: BoxFit.fitWidth,
+                      ),
+                    ),
+                  ],
                 ),
                 // first list the big list stories
                 Expanded(
@@ -116,7 +124,7 @@ class _BookstoreState extends State<Bookstore> {
                             Text(
                               "Sleeping Stories",
                               style: TextStyle(
-                                fontSize: 28,
+                                fontSize: 24,
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromARGB(255, 6, 7, 7),
                                 shadows: [
@@ -142,7 +150,7 @@ class _BookstoreState extends State<Bookstore> {
                       // the second list the Authors
                       Container(
                         height: 100,
-                        margin: EdgeInsets.only(bottom: 25),
+                        margin: EdgeInsets.only(bottom: 20),
                         child: ListView(
                           physics: BouncingScrollPhysics(),
                           scrollDirection: Axis.horizontal,
@@ -219,8 +227,8 @@ class _BookstoreState extends State<Bookstore> {
             ),
             Text(
               book.title,
-              style: GoogleFonts.rubik(
-                fontSize: 22,
+              style: GoogleFonts.acme(
+                fontSize: 20,
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
               ),
@@ -259,7 +267,7 @@ class _BookstoreState extends State<Bookstore> {
         ),
         padding: EdgeInsets.all(12),
         margin: EdgeInsets.only(right: 16, left: index == 0 ? 16 : 0),
-        width: 255,
+        width: 270,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -273,8 +281,8 @@ class _BookstoreState extends State<Bookstore> {
                 ),
               ),
               child: Container(
-                width: 75,
-                height: 75,
+                width: 60,
+                height: 60,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(author.image),
@@ -286,19 +294,15 @@ class _BookstoreState extends State<Bookstore> {
             SizedBox(
               width: 12,
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  author.fullname,
-                  style: GoogleFonts.catamaran(
-                    fontSize: 16,
-                    color: Color.fromARGB(255, 5, 5, 5),
-                    fontWeight: FontWeight.bold,
-                  ),
+            Center(
+              child: Text(
+                author.fullname,
+                style: GoogleFonts.acme(
+                  fontSize: 16,
+                  color: Color.fromARGB(255, 5, 5, 5),
+                  fontWeight: FontWeight.bold,
                 ),
-              ],
+              ),
             ),
           ],
         ),
