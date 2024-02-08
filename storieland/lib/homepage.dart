@@ -97,6 +97,37 @@ class _BookstoreState extends State<Bookstore> {
                     ),
                   ],
                 ),
+                Padding(
+                  padding: EdgeInsets.all(6),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Stories library",
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 6, 7, 7),
+                          shadows: [
+                            Shadow(
+                              color: Color.fromARGB(255, 155, 133, 133)
+                                  .withOpacity(0.5),
+                              offset: Offset(2, 2),
+                              blurRadius: 4,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 8,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
                 // first list the big list stories
                 Expanded(
                   child: Container(
@@ -260,10 +291,18 @@ class _BookstoreState extends State<Bookstore> {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 255, 255, 255),
+          color: Color.fromARGB(211, 255, 255, 255),
           borderRadius: BorderRadius.all(
             Radius.circular(15),
           ),
+          boxShadow: [
+            BoxShadow(
+              color: Color.fromARGB(106, 0, 0, 0).withOpacity(0.1),
+              spreadRadius: 2,
+              blurRadius: 4,
+              offset: Offset(0, 2),
+            ),
+          ],
         ),
         padding: EdgeInsets.all(12),
         margin: EdgeInsets.only(right: 16, left: index == 0 ? 16 : 0),

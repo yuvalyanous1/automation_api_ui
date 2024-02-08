@@ -1,6 +1,7 @@
 import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:storieland/constants.dart';
 import 'dart:developer' as developer;
 import 'local_bottom_navigation_bar.dart';
 
@@ -52,14 +53,32 @@ class _VideoPlayerPageState extends State<VideoPlayrePage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(height: 20),
-                  Text(
-                    "StorieLand",
-                    style: GoogleFonts.chicle(
-                      color: Color.fromARGB(255, 26, 56, 112),
-                      fontWeight: FontWeight.w900,
-                      fontSize: 40,
-                      height: 1,
-                    ),
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.arrow_back,
+                          color: kPrimaryColor,
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      Expanded(
+                        child: Center(
+                          child: Text(
+                            "StorieLand",
+                            style: GoogleFonts.chicle(
+                              color: Color.fromARGB(255, 26, 56, 112),
+                              fontWeight: FontWeight.w900,
+                              fontSize: 40,
+                              height: 1,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 60),
+                    ],
                   ),
                   SizedBox(height: 20),
                   Expanded(
@@ -96,12 +115,12 @@ class _VideoPlayerPageState extends State<VideoPlayrePage> {
       width: 150,
       margin: EdgeInsets.all(8),
       child: Card(
-        color: Color.fromARGB(113, 255, 255, 255).withOpacity(0.5),
+        color: Color.fromARGB(200, 248, 223, 223).withOpacity(0.5),
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
           side: BorderSide(
-            color: Colors.white.withOpacity(0.5),
+            color: Color.fromARGB(200, 248, 223, 223).withOpacity(0.5),
             width: 1.0,
           ),
         ),
@@ -154,7 +173,6 @@ class _VideoPlayerPageState extends State<VideoPlayrePage> {
     );
   }
 
-// the videos
   void initializeVideoPlayers() {
     assetVideoPaths = [
       "assets/video/themonkeyparty.mp4",
@@ -164,7 +182,6 @@ class _VideoPlayerPageState extends State<VideoPlayrePage> {
       "assets/video/test2.mp4",
       "assets/video/test3.mp4",
     ];
-// the title for videos
     videoTitles = [
       "The Forest Clearing",
       "The Farmyard Adventure",

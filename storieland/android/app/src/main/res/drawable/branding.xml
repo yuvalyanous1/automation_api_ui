@@ -1,0 +1,6 @@
+<!-- branding.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+       android:shape="rectangle">
+    <solid android:color="#FF0000" /> <!-- Set your desired color -->
+    <!-- You can add other attributes like corner radius, stroke, etc. -->
+</shape>
